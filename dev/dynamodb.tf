@@ -12,11 +12,13 @@ resource "aws_dynamodb_table" "tf_locks" {
     enabled = true
   }
 
-  tags = {
-    Name        = "terraform-state-project-web-server-lab"
-    Environment = "Dev"
-    Owner       = "Ravan"
-  }
+  tags = merge(
+    local.default_tags,
+    local.environment_tags,
+    {
+      Name = "terraform-state-lock"
+    }
+  )
 
   lifecycle {
     prevent_destroy = true

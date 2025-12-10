@@ -18,11 +18,13 @@ resource "aws_s3_account_public_access_block" "block_account_public_access" {
 resource "aws_s3_bucket" "terraform-state-project-web-server-lab-ravan" {
   bucket = "terraform-state-project-web-server-lab-ravan"
 
-  tags = {
-    Name        = "terraform-state-project-web-server-lab"
-    Environment = "Dev"
-    Owner       = "Ravan"
-  }
+  tags = merge(
+    local.default_tags,
+    local.environment_tags,
+    {
+      Name = "bucket-state-lab-server"
+    }
+  )
 }
 
 # versionament
