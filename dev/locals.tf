@@ -4,9 +4,9 @@ locals {
   }
 
   default_tags = {
-    Project   = "web-server"
-    Owner     = "Ravan Cardoso"
-    ManagedBy = "Terraform"
+    Project     = "web-server"
+    Owner       = "Ravan Cardoso"
+    ManagedBy   = "Terraform"
     Departament = "Devops"
   }
 }
